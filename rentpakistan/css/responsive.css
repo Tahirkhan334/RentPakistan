@@ -1,0 +1,79 @@
+/* ==========================================================================
+   RentPakistan — responsive.css
+   Breakpoints tested around 1440 / 1024 / 768 / 480 / 375 / 320.
+   Mobile-first overrides layered on top of style.css.
+   ========================================================================== */
+
+/* ---- Laptops / small desktops ---- */
+@media (max-width: 1240px) {
+  .container { padding: 0 20px; }
+}
+
+/* ---- Tablets (≤1024px) ---- */
+@media (max-width: 1024px) {
+  .cat-grid, .grid-4, .loc-grid, .feature-grid, .steps { grid-template-columns: repeat(3, 1fr); }
+  .filter-grid { grid-template-columns: repeat(3, 1fr); }
+  .search-grid { grid-template-columns: repeat(3, 1fr); }
+  .search-grid > .field:nth-child(4), .search-grid > .field:nth-child(5) { grid-column: span 1; }
+  .hotel-search { grid-template-columns: repeat(2, 1fr); }
+  .about-hero, .contact-layout { grid-template-columns: 1fr; }
+  .pd-body { grid-template-columns: 1fr; }
+  .dash-layout { grid-template-columns: 200px 1fr; }
+}
+
+/* ---- Navbar collapses to hamburger below 900px ---- */
+@media (max-width: 900px) {
+  .navbar__menu {
+    position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
+    background: var(--surface); flex-direction: column; align-items: flex-start;
+    padding: 26px 24px; gap: 6px; transform: translateX(-100%); transition: transform .3s ease;
+    overflow-y: auto; z-index: 400;
+  }
+  .navbar__menu.is-open { transform: translateX(0); }
+  .navbar__menu a { width: 100%; padding: 14px 4px; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  .navbar__burger { display: flex; }
+  .navbar__actions .btn--accent span { display: none; }
+  .search-grid { grid-template-columns: repeat(2, 1fr); }
+  .search-card { margin-top: -70px; }
+}
+
+/* ---- Small tablets / large phones (≤768px) ---- */
+@media (max-width: 768px) {
+  .section { padding: 60px 0; }
+  .cat-grid, .grid-4, .grid-3, .loc-grid, .feature-grid, .steps { grid-template-columns: repeat(2, 1fr); }
+  .filter-grid { grid-template-columns: repeat(2, 1fr); }
+  .hotel-search { grid-template-columns: 1fr 1fr; }
+  .hero { padding: 44px 0 120px; }
+  .hero__content { max-width: 100%; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .dash-layout { grid-template-columns: 1fr; }
+  .dash-nav { flex-direction: row; overflow-x: auto; }
+  .modal__panel { padding: 26px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .pd-amenities { grid-template-columns: 1fr; }
+}
+
+/* ---- Phones (≤480px) ---- */
+@media (max-width: 480px) {
+  .cat-grid, .grid-4, .grid-3, .loc-grid, .feature-grid, .steps, .filter-grid, .search-grid, .hotel-search {
+    grid-template-columns: 1fr;
+  }
+  .search-card { padding: 20px; margin-top: -50px; }
+  .hero__content h1 { font-size: 1.9rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .navbar__logo span { display: none; }
+  .toast-stack { left: 12px; right: 12px; top: 84px; }
+  .toast { max-width: none; }
+  .p-card__foot { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .p-card__foot .btn { width: 100%; }
+  .pd-actions { flex-direction: column; }
+  .pd-actions .btn, .pd-actions a { width: 100%; }
+}
+
+/* ---- Very small phones (≤375px / 320px) ---- */
+@media (max-width: 375px) {
+  .container { padding: 0 16px; }
+  .section-head h2 { font-size: 1.5rem; }
+  .testimonial-card { padding: 26px 18px; }
+  .modal__panel { padding: 20px; }
+}

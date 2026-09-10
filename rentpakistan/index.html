@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RentPakistan - Houses, Apartments & Hotels for Rent in Pakistan</title>
+<meta name="description" content="Find houses, apartments, flats, rooms, hotels, guest houses, villas, farm houses and commercial properties for rent across Pakistan. Search by city, society and budget on RentPakistan.">
+<meta name="keywords" content="rent Pakistan, houses for rent, apartments for rent, hotels Pakistan, DHA, Bahria Town, property Pakistan">
+<meta property="og:title" content="RentPakistan - Find Your Perfect Place in Pakistan">
+<meta property="og:description" content="Discover houses, apartments, hotels, rooms and commercial properties across Pakistan.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://picsum.photos/seed/rentpakistan-og/1200/630">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ============================== NAVBAR ============================== -->
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="#home" class="navbar__logo" data-nav="home"><i class="fa-solid fa-house-chimney-window"></i> <span>RentPakistan</span></a>
+
+    <nav class="navbar__menu" id="navMenu">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#properties" data-nav="properties">Properties</a>
+      <a href="#houses" data-nav="houses">Houses</a>
+      <a href="#apartments" data-nav="apartments">Apartments</a>
+      <a href="#hotels" data-nav="hotels">Hotels</a>
+      <a href="#commercial" data-nav="commercial">Commercial</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      <button class="icon-btn" data-nav="favorites" aria-label="Favorites">
+        <i class="fa-regular fa-heart"></i>
+        <span class="fav-count" data-fav-count>0</span>
+      </button>
+      <button class="btn btn--ghost" data-open-modal="loginModal" data-open-login>Login</button>
+      <button class="user-chip" data-user-chip data-nav="dashboard">
+        <span class="user-chip__avatar"><i class="fa-solid fa-user"></i></span>
+        <span data-user-name>Account</span>
+      </button>
+      <button class="btn btn--accent" data-open-modal="listPropertyModal"><i class="fa-solid fa-plus"></i> <span>List Your Property</span></button>
+      <button class="navbar__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================== HOME ============================== -->
+<section class="view is-active" id="view-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg"><img src="https://picsum.photos/seed/rentpakistan-hero/1800/1000" alt="Modern homes across Pakistan"></div>
+    <div class="container hero__content">
+      <span class="eyebrow">PAKISTAN'S PROPERTY MARKETPLACE</span>
+      <h1>Find Your Perfect Place in Pakistan</h1>
+      <p>Discover houses, apartments, hotels, rooms and commercial properties across Pakistan.</p>
+      <div class="hero__popular">
+        <span>Popular:</span>
+        <button class="chip" data-popular-search="Islamabad">Islamabad</button>
+        <button class="chip" data-popular-search="Lahore">Lahore</button>
+        <button class="chip" data-popular-search="Karachi">Karachi</button>
+        <button class="chip" data-popular-search="Peshawar">Peshawar</button>
+        <button class="chip" data-popular-search="Mardan">Mardan</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <form class="search-card reveal" id="heroSearchForm">
+        <h3>What are you looking for?</h3>
+        <div class="search-grid">
+          <div class="field">
+            <label for="heroCity">Location</label>
+            <select id="heroCity" name="hero-city"></select>
+          </div>
+          <div class="field">
+            <label for="heroType">Property Type</label>
+            <select id="heroType" name="hero-type"></select>
+          </div>
+          <div class="field">
+            <label for="heroBudget">Max Budget (PKR)</label>
+            <input type="number" id="heroBudget" name="hero-budget" placeholder="e.g. 80000">
+          </div>
+          <div class="field">
+            <label for="heroBedrooms">Bedrooms</label>
+            <select id="heroBedrooms" name="hero-bedrooms">
+              <option value="">Any</option>
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5+">5+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="heroCheckin">Check-in (for hotels)</label>
+            <input type="date" id="heroCheckin" name="hero-checkin">
+          </div>
+          <button type="submit" class="btn btn--primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">BROWSE BY CATEGORY</span>
+        <h2>Every kind of place, in one search</h2>
+      </div>
+      <div class="cat-grid" id="categoryGrid"></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROPERTIES -->
+  <section class="section section--muted">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">FEATURED LISTINGS</span>
+        <h2>Handpicked properties across Pakistan</h2>
+      </div>
+      <div class="grid-4" id="featuredGrid"></div>
+      <div class="section-foot">
+        <button class="btn btn--outline" id="loadMoreBtn">Load More Properties</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">WHY RENTPAKISTAN</span>
+        <h2>Built for renters and owners alike</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal"><span class="feature-card__icon"><i class="fa-solid fa-shield-halved"></i></span><h3>Verified Listings</h3><p>Every listing is checked for accuracy before it goes live.</p></div>
+        <div class="feature-card reveal"><span class="feature-card__icon"><i class="fa-solid fa-handshake"></i></span><h3>Trusted Owners</h3><p>Deal directly with property owners and verified agents.</p></div>
+        <div class="feature-card reveal"><span class="feature-card__icon"><i class="fa-solid fa-sliders"></i></span><h3>Easy Search</h3><p>Filter by city, society, budget and property type in seconds.</p></div>
+        <div class="feature-card reveal"><span class="feature-card__icon"><i class="fa-solid fa-map-location-dot"></i></span><h3>Nationwide Coverage</h3><p>From Karachi to Hunza, find a place in every major city.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR LOCATIONS -->
+  <section class="section section--muted">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">POPULAR LOCATIONS</span>
+        <h2>Explore Pakistan, city by city</h2>
+      </div>
+      <div class="loc-grid" id="popularLocationsGrid"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2>Renting made simple</h2>
+      </div>
+      <div class="steps">
+        <div class="step-card reveal"><span class="step-card__num">01</span><h3>Search</h3><p>Use filters to narrow down by city, society, budget and type.</p></div>
+        <div class="step-card reveal"><span class="step-card__num">02</span><h3>Compare</h3><p>Save favorites and compare properties side by side.</p></div>
+        <div class="step-card reveal"><span class="step-card__num">03</span><h3>Contact Owner</h3><p>Reach out directly by call, WhatsApp or message.</p></div>
+        <div class="step-card reveal"><span class="step-card__num">04</span><h3>Rent Your Place</h3><p>Finalize details and move into your new place with ease.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section--muted">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">TESTIMONIALS</span>
+        <h2>What our users say</h2>
+      </div>
+      <div class="testimonial-viewport">
+        <div class="testimonial-track" id="testimonialTrack"></div>
+      </div>
+      <div class="testimonial-nav">
+        <button class="icon-btn" id="testiPrev" aria-label="Previous testimonial"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="icon-btn" id="testiNext" aria-label="Next testimonial"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-item__question">How do I find a house for rent? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Use the search bar or the Properties page to filter by city, society, budget and bedrooms - results update instantly.</p></div></div>
+        <div class="faq-item"><button class="faq-item__question">Can I list my property? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Yes. Click "List Your Property" in the navbar, fill in the details and it will appear in listings and your dashboard.</p></div></div>
+        <div class="faq-item"><button class="faq-item__question">How do I contact an owner? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Open any property's details page to call, message or WhatsApp the owner directly.</p></div></div>
+        <div class="faq-item"><button class="faq-item__question">Are listings verified? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Featured listings go through a verification check before publishing on RentPakistan.</p></div></div>
+        <div class="faq-item"><button class="faq-item__question">Can I search by society? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Yes, choose a city first and the society/area filter will populate with matching options.</p></div></div>
+        <div class="faq-item"><button class="faq-item__question">Can I save favorite properties? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Tap the heart icon on any card to save it - your favorites are kept on this device.</p></div></div>
+        <div class="faq-item"><button class="faq-item__question">Can I find hotels? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Visit the Hotels page to search by destination and check availability across major cities.</p></div></div>
+        <div class="faq-item"><button class="faq-item__question">Can I find commercial properties? <i class="fa-solid fa-plus"></i></button><div class="faq-item__answer"><p>Yes, the Commercial page covers shops, offices, warehouses, plazas and restaurants.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============================== PROPERTIES ============================== -->
+<section class="view" id="view-properties">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Properties</p>
+      <h1>All Properties</h1>
+      <p>Browse houses, apartments, flats, rooms and more across Pakistan.</p>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <section class="filter-panel" data-filter-scope="properties" data-grid="propertiesGrid" data-base="PROPERTIES">
+      <div class="filter-grid">
+        <div class="field"><label>City</label><select name="f-city"></select></div>
+        <div class="field"><label>Society / Area</label><select name="f-society"><option value="">Any City First</option></select></div>
+        <div class="field"><label>Property Type</label><select name="f-type"></select></div>
+        <div class="field"><label>Purpose</label>
+          <select name="f-purpose"><option value="">Any Purpose</option><option>Rent</option><option>Short Stay</option><option>Commercial</option></select>
+        </div>
+        <div class="field"><label>Min Price (PKR)</label><input type="number" name="f-minPrice" placeholder="0"></div>
+        <div class="field"><label>Max Price (PKR)</label><input type="number" name="f-maxPrice" placeholder="Any"></div>
+        <div class="field"><label>Bedrooms</label><select name="f-bedrooms"><option value="">Any</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5+">5+</option></select></div>
+        <div class="field"><label>Bathrooms</label><select name="f-bathrooms"><option value="">Any</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5+">5+</option></select></div>
+        <div class="field"><label>Furnished</label><select name="f-furnished"><option value="">Any</option><option>Furnished</option><option>Unfurnished</option><option>Semi Furnished</option></select></div>
+        <div class="field"><label>Keyword</label><input type="search" name="f-keyword" placeholder="Search title or area"></div>
+        <div class="field"><label>Sort by</label>
+          <select name="f-sort"><option value="newest">Newest</option><option value="price-low">Price Low to High</option><option value="price-high">Price High to Low</option><option value="popular">Most Popular</option></select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn--primary" data-apply-filters>Apply Filters</button>
+        <button class="btn btn--ghost" data-reset-filters>Reset Filters</button>
+      </div>
+    </section>
+    <div class="results-bar"><strong data-result-count>Properties</strong></div>
+    <div class="grid-4" id="propertiesGrid"></div>
+  </div>
+</section>
+
+<!-- ============================== HOUSES ============================== -->
+<section class="view" id="view-houses">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Houses</p>
+      <h1>Houses for Rent</h1>
+      <p>From 3 Marla starter homes to 2 Kanal estates, find a house that fits.</p>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <section class="filter-panel" data-filter-scope="houses" data-grid="housesGrid" data-base="PROPERTIES" data-fixed-type="House">
+      <div class="filter-grid">
+        <div class="field"><label>City</label><select name="f-city"></select></div>
+        <div class="field"><label>Society / Area</label><select name="f-society"><option value="">Any City First</option></select></div>
+        <div class="field"><label>Bedrooms</label><select name="f-bedrooms"><option value="">Any</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5+">5+</option></select></div>
+        <div class="field"><label>Bathrooms</label><select name="f-bathrooms"><option value="">Any</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5+">5+</option></select></div>
+        <div class="field"><label>Furnished</label><select name="f-furnished"><option value="">Any</option><option>Furnished</option><option>Unfurnished</option><option>Semi Furnished</option></select></div>
+        <div class="field"><label>Max Price (PKR)</label><input type="number" name="f-maxPrice" placeholder="Any"></div>
+        <div class="field"><label>House Size / Keyword</label><input type="search" name="f-keyword" placeholder="e.g. 5 Marla, 1 Kanal"></div>
+        <div class="field"><label>Sort by</label><select name="f-sort"><option value="newest">Newest</option><option value="price-low">Price Low to High</option><option value="price-high">Price High to Low</option><option value="popular">Most Popular</option></select></div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn--primary" data-apply-filters>Apply Filters</button>
+        <button class="btn btn--ghost" data-reset-filters>Reset Filters</button>
+      </div>
+    </section>
+    <div class="results-bar"><strong data-result-count>Houses</strong></div>
+    <div class="grid-4" id="housesGrid"></div>
+  </div>
+</section>
+
+<!-- ============================== APARTMENTS ============================== -->
+<section class="view" id="view-apartments">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Apartments</p>
+      <h1>Apartments for Rent</h1>
+      <p>Studios to 4-bed apartments with lifts, parking and backup power.</p>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <section class="filter-panel" data-filter-scope="apartments" data-grid="apartmentsGrid" data-base="PROPERTIES" data-fixed-type="Apartment">
+      <div class="filter-grid">
+        <div class="field"><label>City</label><select name="f-city"></select></div>
+        <div class="field"><label>Society / Area</label><select name="f-society"><option value="">Any City First</option></select></div>
+        <div class="field"><label>Bedrooms</label><select name="f-bedrooms"><option value="">Any</option><option value="0">Studio</option><option>1</option><option>2</option><option>3</option><option value="5+">4+</option></select></div>
+        <div class="field"><label>Furnished</label><select name="f-furnished"><option value="">Any</option><option>Furnished</option><option>Unfurnished</option><option>Semi Furnished</option></select></div>
+        <div class="field"><label>Max Price (PKR)</label><input type="number" name="f-maxPrice" placeholder="Any"></div>
+        <div class="field"><label>Sort by</label><select name="f-sort"><option value="newest">Newest</option><option value="price-low">Price Low to High</option><option value="price-high">Price High to Low</option><option value="popular">Most Popular</option></select></div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn--primary" data-apply-filters>Apply Filters</button>
+        <button class="btn btn--ghost" data-reset-filters>Reset Filters</button>
+      </div>
+    </section>
+    <div class="results-bar"><strong data-result-count>Apartments</strong></div>
+    <div class="grid-4" id="apartmentsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================== HOTELS ============================== -->
+<section class="view" id="view-hotels">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Hotels</p>
+      <h1>Hotels Across Pakistan</h1>
+      <p>From city business hotels to mountain retreats in Hunza and Swat.</p>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <form class="hotel-search" id="hotelSearchPanel">
+      <div class="field"><label>Destination</label><select name="h-destination"></select></div>
+      <div class="field"><label>Check-in</label><input type="date" name="h-checkin"></div>
+      <div class="field"><label>Check-out</label><input type="date" name="h-checkout"></div>
+      <div class="field"><label>Guests / Rooms</label>
+        <select name="h-guests"><option>2 Guests, 1 Room</option><option>1 Guest, 1 Room</option><option>4 Guests, 2 Rooms</option><option>6 Guests, 3 Rooms</option></select>
+      </div>
+      <button type="button" class="btn btn--primary" data-search-hotels>Search Hotels</button>
+    </form>
+    <div class="results-bar"><strong id="hotelsCount">Hotels</strong></div>
+    <div class="grid-4" id="hotelsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================== COMMERCIAL ============================== -->
+<section class="view" id="view-commercial">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Commercial</p>
+      <h1>Commercial Properties</h1>
+      <p>Shops, offices, warehouses, plazas and restaurant spaces for rent.</p>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <section class="filter-panel" data-filter-scope="commercial" data-grid="commercialGrid" data-base="PROPERTIES" data-fixed-type="Commercial Building">
+      <div class="filter-grid">
+        <div class="field"><label>City</label><select name="f-city"></select></div>
+        <div class="field"><label>Society / Area</label><select name="f-society"><option value="">Any City First</option></select></div>
+        <div class="field"><label>Property Type</label>
+          <select name="f-type"><option value="">Any Type</option><option>Shop</option><option>Office</option><option>Warehouse</option><option>Commercial Building</option><option>Restaurant</option></select>
+        </div>
+        <div class="field"><label>Max Price (PKR)</label><input type="number" name="f-maxPrice" placeholder="Any"></div>
+        <div class="field"><label>Keyword</label><input type="search" name="f-keyword" placeholder="e.g. Main Boulevard"></div>
+        <div class="field"><label>Sort by</label><select name="f-sort"><option value="newest">Newest</option><option value="price-low">Price Low to High</option><option value="price-high">Price High to Low</option></select></div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn--primary" data-apply-filters>Apply Filters</button>
+        <button class="btn btn--ghost" data-reset-filters>Reset Filters</button>
+      </div>
+    </section>
+    <div class="results-bar"><strong data-result-count>Commercial Properties</strong></div>
+    <div class="grid-4" id="commercialGrid"></div>
+  </div>
+</section>
+
+<!-- ============================== FAVORITES ============================== -->
+<section class="view" id="view-favorites">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Favorites</p>
+      <h1>Your Favorite Properties</h1>
+      <p>Saved on this device using your browser's local storage.</p>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <div class="grid-4" id="favoritesGrid"></div>
+    <div class="empty-state" id="favoritesEmpty" style="display:none;">
+      <i class="fa-regular fa-heart"></i>
+      <p>You haven't saved any properties yet. Tap the heart icon on a listing to save it here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DASHBOARD ============================== -->
+<section class="view" id="view-dashboard">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Dashboard</p>
+      <h1>My Dashboard</h1>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <div class="dash-layout">
+      <nav class="dash-nav">
+        <button class="is-active" data-dash-panel="profile"><i class="fa-solid fa-user"></i> Profile</button>
+        <button data-dash-panel="properties"><i class="fa-solid fa-house"></i> My Properties</button>
+        <button data-dash-panel="favorites"><i class="fa-solid fa-heart"></i> Favorites</button>
+        <button data-dash-panel="messages"><i class="fa-solid fa-envelope"></i> Messages</button>
+        <button data-dash-panel="settings"><i class="fa-solid fa-gear"></i> Settings</button>
+        <button data-logout><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </nav>
+      <div class="dash-content">
+        <div class="dash-panel is-active" id="dashPanel-profile">
+          <div class="dash-profile-card">
+            <span class="dash-profile-card__avatar"><i class="fa-solid fa-user"></i></span>
+            <div><h3 id="dashProfileName" class="mt-0">Your Name</h3><p class="text-muted" id="dashProfileEmail">you@example.com</p></div>
+          </div>
+          <p>Welcome to your RentPakistan dashboard. From here you can manage properties you've listed, review saved favorites and update your settings.</p>
+        </div>
+        <div class="dash-panel" id="dashPanel-properties">
+          <div class="grid-3" id="myPropertiesGrid"></div>
+          <div class="empty-state" id="myPropertiesEmpty" style="display:none;"><i class="fa-solid fa-house-circle-check"></i><p>You haven't listed any properties yet.</p><button class="btn btn--primary" data-open-modal="listPropertyModal">List Your Property</button></div>
+        </div>
+        <div class="dash-panel" id="dashPanel-favorites">
+          <div class="grid-3" id="dashFavoritesGrid"></div>
+        </div>
+        <div class="dash-panel" id="dashPanel-messages">
+          <div class="empty-state"><i class="fa-regular fa-comment-dots"></i><p>No messages yet. Inquiries from property owners will appear here.</p></div>
+        </div>
+        <div class="dash-panel" id="dashPanel-settings">
+          <p>Account settings are managed locally in this demo. Clearing your browser storage will reset your session, listings and favorites.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ABOUT ============================== -->
+<section class="view" id="view-about">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / About</p>
+      <h1>About RentPakistan</h1>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <div class="about-hero reveal">
+      <div>
+        <span class="eyebrow">OUR STORY</span>
+        <h2>A property marketplace built for Pakistan</h2>
+        <p>RentPakistan was built to make finding a place to rent or list a property simple, transparent and fast - whether you're searching for a 5 Marla house in Lahore, a serviced flat in Islamabad, or a shop on a busy Peshawar road.</p>
+        <p>We cover houses, apartments, flats, rooms, hostels, hotels, guest houses, villas, farm houses and commercial spaces across every major city and dozens of housing societies nationwide.</p>
+        <div class="stat-row">
+          <div><strong id="statListings">32+</strong><span>Live Listings</span></div>
+          <div><strong>15+</strong><span>Cities Covered</span></div>
+          <div><strong>15</strong><span>Partner Hotels</span></div>
+        </div>
+      </div>
+      <img src="https://picsum.photos/seed/rentpakistan-about/900/700" alt="RentPakistan team reviewing property listings">
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CONTACT ============================== -->
+<section class="view" id="view-contact">
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="#home" data-nav="home">Home</a> / Contact</p>
+      <h1>Contact Us</h1>
+    </div>
+  </div>
+  <div class="container section--tight">
+    <div class="contact-layout">
+      <div>
+        <div class="contact-info-card"><i class="fa-solid fa-location-dot"></i><div><h4 class="mt-0">Office</h4><p>Blue Area, Islamabad, Pakistan</p></div></div>
+        <div class="contact-info-card"><i class="fa-solid fa-phone"></i><div><h4 class="mt-0">Phone</h4><p>+92 300 1234567</p></div></div>
+        <div class="contact-info-card"><i class="fa-solid fa-envelope"></i><div><h4 class="mt-0">Email</h4><p>support@rentpakistan.pk</p></div></div>
+      </div>
+      <form id="contactForm" class="filter-panel">
+        <div class="form-grid">
+          <div class="field field--full"><label>Full Name</label><input type="text" name="name"></div>
+          <div class="field field--full"><label>Email</label><input type="email" name="email"></div>
+          <div class="field field--full"><label>Message</label><textarea name="message" rows="5"></textarea></div>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block" style="margin-top:16px;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <span class="footer-logo">RentPakistan</span>
+      <p>Find homes, hotels and commercial properties across Pakistan.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#properties" data-nav="properties">Properties</a></li>
+        <li><a href="#houses" data-nav="houses">Houses</a></li>
+        <li><a href="#apartments" data-nav="apartments">Apartments</a></li>
+        <li><a href="#hotels" data-nav="hotels">Hotels</a></li>
+        <li><a href="#commercial" data-nav="commercial">Commercial</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Popular Cities</h4>
+      <ul>
+        <li><a href="#properties" data-nav="properties">Islamabad</a></li>
+        <li><a href="#properties" data-nav="properties">Lahore</a></li>
+        <li><a href="#properties" data-nav="properties">Karachi</a></li>
+        <li><a href="#properties" data-nav="properties">Peshawar</a></li>
+        <li><a href="#properties" data-nav="properties">Mardan</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+        <li><a href="#faq" onclick="navigateTo('home')">FAQ</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">&copy; 2026 RentPakistan. All rights reserved.</div>
+</footer>
+
+<!-- ============================== MODALS ============================== -->
+
+<!-- LOGIN -->
+<div class="modal" id="loginModal">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel">
+    <button class="modal__close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+    <h2>Welcome back</h2>
+    <p class="modal__sub">Log in to manage your properties and favorites.</p>
+    <form id="loginForm">
+      <div class="form-grid">
+        <div class="field field--full"><label>Email</label><input type="email" name="email"></div>
+        <div class="field field--full"><label>Password</label><input type="password" name="password"></div>
+      </div>
+      <div class="checkbox-row" style="margin-top:12px;"><input type="checkbox" id="rememberMe" name="remember"><label for="rememberMe">Remember Me</label></div>
+      <button type="submit" class="btn btn--primary btn--block" style="margin-top:18px;">Login</button>
+    </form>
+    <p class="modal__switch">Don't have an account? <a href="#" data-switch-modal="loginModal|signupModal">Sign up</a></p>
+  </div>
+</div>
+
+<!-- SIGNUP -->
+<div class="modal" id="signupModal">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel">
+    <button class="modal__close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+    <h2>Create your account</h2>
+    <p class="modal__sub">Join RentPakistan to list properties and save favorites.</p>
+    <form id="signupForm">
+      <div class="form-grid">
+        <div class="field field--full"><label>Full Name</label><input type="text" name="name"></div>
+        <div class="field field--full"><label>Email</label><input type="email" name="email"></div>
+        <div class="field field--full"><label>Phone Number</label><input type="tel" name="phone" placeholder="03001234567"></div>
+        <div class="field"><label>Password</label><input type="password" name="password"></div>
+        <div class="field"><label>Confirm Password</label><input type="password" name="confirmPassword"></div>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block" style="margin-top:18px;">Sign Up</button>
+    </form>
+    <p class="modal__switch">Already have an account? <a href="#" data-switch-modal="signupModal|loginModal">Log in</a></p>
+  </div>
+</div>
+
+<!-- LIST YOUR PROPERTY -->
+<div class="modal" id="listPropertyModal">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel modal__panel--form">
+    <button class="modal__close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+    <h2>List Your Property</h2>
+    <p class="modal__sub">Fill in the details below - your listing will appear instantly.</p>
+    <form id="listPropertyForm">
+      <div class="form-grid">
+        <div class="field field--full"><label>Listing Title (optional)</label><input type="text" name="title" placeholder="e.g. Modern 5 Marla House"></div>
+        <div class="field"><label>Full Name</label><input type="text" name="fullName"></div>
+        <div class="field"><label>Phone Number</label><input type="tel" name="phone" placeholder="03001234567"></div>
+        <div class="field field--full"><label>Email</label><input type="email" name="email"></div>
+        <div class="field"><label>City</label><select name="city"></select></div>
+        <div class="field"><label>Society / Area</label><select name="society"><option value="">Select City First</option></select></div>
+        <div class="field"><label>Property Type</label><select name="propertyType"></select></div>
+        <div class="field"><label>Purpose</label><select name="purpose"><option>Rent</option><option>Short Stay</option><option>Commercial</option></select></div>
+        <div class="field"><label>Price (PKR)</label><input type="number" name="price"></div>
+        <div class="field"><label>Property Size</label><input type="text" name="size" placeholder="e.g. 5 Marla, 1200 sqft"></div>
+        <div class="field"><label>Bedrooms</label><input type="number" name="bedrooms" min="0"></div>
+        <div class="field"><label>Bathrooms</label><input type="number" name="bathrooms" min="0"></div>
+        <div class="field"><label>Furnished Status</label><select name="furnished"><option>Unfurnished</option><option>Furnished</option><option>Semi Furnished</option></select></div>
+        <div class="field"><label>Property Images</label><input type="file" name="images" accept="image/*" multiple></div>
+        <div class="field field--full"><label>Description</label><textarea name="description" rows="4" placeholder="Describe the property..."></textarea></div>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block" style="margin-top:18px;">Publish Property</button>
+    </form>
+  </div>
+</div>
+
+<!-- MESSAGE OWNER -->
+<div class="modal" id="messageOwnerModal">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel">
+    <button class="modal__close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+    <h2>Send a Message</h2>
+    <p class="modal__sub">Your message will be sent to the property owner.</p>
+    <form id="messageOwnerForm">
+      <div class="form-grid">
+        <div class="field field--full"><label>Your Name</label><input type="text" name="name" required></div>
+        <div class="field field--full"><label>Your Email</label><input type="email" name="email" required></div>
+        <div class="field field--full"><label>Message</label><textarea name="message" rows="4" required></textarea></div>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block" style="margin-top:18px;">Send</button>
+    </form>
+  </div>
+</div>
+
+<!-- PROPERTY / HOTEL DETAILS -->
+<div class="modal" id="propertyDetailsModal">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel modal__panel--wide">
+    <button class="modal__close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+    <div class="pd-body" id="propertyDetailsBody"></div>
+  </div>
+</div>
+
+<script src="js/properties.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/search.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
